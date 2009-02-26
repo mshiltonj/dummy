@@ -1,6 +1,6 @@
 module Dummy; end;
 
-module Dummy::Data
+class Dummy::Data
     WORD_FILE = '/usr/share/dict/words'
     def self.words(min = 25, max = 255)
         wrds = '' 
