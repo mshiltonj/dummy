@@ -1,2 +1,2 @@
-require 'dummy/data'
+require 'dummy/content'
 require 'dummy/user'

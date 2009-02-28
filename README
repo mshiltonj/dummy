@@ -1,1 +1,32 @@
-making dummy content
+= Dummy
+
+Making dummy and semi-random content. Suitable for creating baseline data for integration or performance testing.
+
+Requires the file '/usr/share/dict/words' for now. :-/
+
+== Examples
+
+ Post.title = Dummy::Content.words(50, 140) 
+
+Returns a string of words within specified minimum and maximum length.
+
+ Post.body = Dummy::Content.text(2048, 4096) 
+
+Returns a block of text within specified minimum and maximum length. This differs from .words() in that is includes randomly inserted paragraph breaks.
+
+
+ Dummy::User.new()
+
+Returns a dummy user record with related field values. For example: [tba]
+
+== Additional Info
+
+Author: Steven Hilton
+Contact: mshiltonj@gmail.com
+License: MIT
+Home: http://github.com/mshiltonj/dummy
+
+
+Copyright (c) 2009 Steven Hilton. All Rights Reserved.
+
+
