@@ -48,21 +48,13 @@ class Dummy::Content
         # pick a random spot in the file
         wrds << ' ' unless wrds == ''
         wrds << get_random_word(word_file)
-#        puts "--------"
-#        puts "WORDS: #{wrds}"
-#        puts "MIN: #{min}"
-#        puts "MAX: #{max}"
-#        puts "WL: #{wrds.length}"
-#        puts "RANDOM LENGTH: #{random_length}"
         if wrds.length >= random_length 
 
           if wrds.length <= max && wrds.length >= min
             #done
-#            puts 1
             break
           elsif old_wrds.length <= max && old_wrds.length >= min
             # go back to previous one
-#            puts 2
             wrds = old_wrds.clone
             break
           else
@@ -71,32 +63,19 @@ class Dummy::Content
             edge_case_tries +=1
            
             unless edge_case_tries >= MAX_EDGE_CASE_TRIES
-#              puts 3
               # back up and try again
               wrds = old_wrds.clone
               next
             end
-#            puts 4
 
-#            puts "LEN: #{wrds.length}"
             # we tried a few times, now we force it
             wrds = old_wrds.clone
             word_length_needed = min - wrds.length 
             if word_length_needed == 1
-#              puts "exactly one"
               wrds << 's'
             else
-#              puts "xxx"
-#              puts FILL_WORDS[0].inspect         
-#              puts word_length_needed
-#              puts "xxx"
               wrds << " " + FILL_WORDS[word_length_needed - 1]
-#              puts "======="
-#              puts "greater != 1"
-#              puts "WLN: #{word_length_needed}"
-#              puts "LEN3: #{wrds.length}"
-#              puts wrds
-#              puts "======="
+              
             end
             break
           end
@@ -104,10 +83,11 @@ class Dummy::Content
         old_wrds = wrds.clone
       end
       word_file.close
-      wrds = wrds.strip
-      #puts "LEN: #{wrd.length}"
-      #puts "======"
       wrds
+    end
+
+    def string(length)
+       return words(length, length)  
     end
 
     def text(min = 2048, max = 4096) 
