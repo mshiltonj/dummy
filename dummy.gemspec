@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2009-03-01}
   s.description = %q{Generating dummy data, perhaps for integration or performance testing}
   s.email = %q{mshiltonj@gmail.com}
-  s.files = ["dummy.gemspec", "coverage", "tasks", "spec_report", "dummy-0.0.0.gem", "spec", "MIT-LICENCE", "README", "lib", "Rakefile", "VERSION.yml", "lib/dummy.rb", "lib/dummy", "lib/dummy/content.rb", "lib/dummy/user.rb", "tasks/jeweler.rake", "tasks/rspec.rake"]
+  s.files = ["dummy.gemspec", "coverage", "tasks", "spec_report", "spec", "MIT-LICENCE", "README", "lib", "Rakefile", "VERSION.yml", "lib/dummy.rb", "lib/dummy", "lib/dummy/content.rb", "lib/dummy/user.rb", "tasks/jeweler.rake", "tasks/rspec.rake"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/mshiltonj/dummy}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
