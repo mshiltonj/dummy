@@ -289,7 +289,8 @@ class Dummy::User
     private :list_of_female_first_names
 
     def list_of_last_names
-      %w(Smith Johnson Williams Jones Brown Davis Miller Wilson Moore
+    
+      list = %w(Smith Johnson Williams Jones Brown Davis Miller Wilson Moore
       Taylor Anderson Thomas Jackson White Harris Martin Thompson Garcia
       Martinez Robinson Clark Rodriguez Lewis Lee Walker Hall Allen
       Young Hernandez King Wright Lopez Hill Scott Green Adams Baker
@@ -415,6 +416,7 @@ class Dummy::User
       Barlow Boyle Mcmahon Buckner Rocha Puckett Langley Knowles
       Cooke Velazquez Whitley Noel Vang
       )
+      list
     end
     private :list_of_last_names
   end
