@@ -1,2 +1,3 @@
+--color
 --format html:spec_report/index.html
 --format progress
