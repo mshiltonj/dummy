@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
+
 describe "Dummy namespace" do
   it 'should exit' do
     ::Object.const_defined?('Dummy').should be_true
