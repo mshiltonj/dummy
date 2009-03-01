@@ -3,11 +3,11 @@ module Dummy; end;
 class Dummy::User
   attr_accessor :login, :first_name, :last_name, :email_address, :full_name
   def initialize
-    @first_name     = self.class.generate_first_name
-    @last_name      = self.class.generate_last_name
-    @login          = self.class.generate_login(first_name, last_name)
-    @email_address  = self.class.generate_email_address(login)
-    @full_name      = self.class.generate_full_name(first_name, last_name)
+    @first_name     = self.class.send(:generate_first_name)
+    @last_name      = self.class.send(:generate_last_name)
+    @login          = self.class.send(:generate_login, first_name, last_name)
+    @email_address  = self.class.send(:generate_email_address, login)
+    @full_name      = self.class.send(:generate_full_name, first_name, last_name)
   end
 
   class << self
@@ -16,16 +16,19 @@ class Dummy::User
       name_set = rand < 0.5 ?  list_of_male_first_names: list_of_female_first_names
       name_set[rand(name_set.size)] 
     end
+    private :generate_first_name
 
     def generate_last_name
       list_of_last_names[rand(list_of_last_names.size)] 
     end
+    private :generate_last_name
 
     def generate_full_name(fname = nil, lname = nil)
       fname ||= first_name
       lname ||= last_name
       "#{fname} #{lname}"
     end
+    private :generate_full_name
 
     def generate_login(fname = nil, lname = nil)
       # b.smith.9999 OR
@@ -50,11 +53,13 @@ class Dummy::User
       end
       "%s.%s.%04d" % [fname, lname, num]
     end
+    private :generate_login
 
     def generate_email_address(lgn = nil)
         lgn ||= generate_login
         return "#{lgn}@example.com" 
     end
+    private :generate_email_address
 
     def list_of_male_first_names
       %w(
@@ -168,6 +173,7 @@ class Dummy::User
       Talen Blaise Brenton Eliezer Isaak Tyshawn Dandre Daxton Leroy
       Trystan)
     end
+    private :list_of_male_first_names
 
     def list_of_female_first_names
       %w(
@@ -280,6 +286,7 @@ class Dummy::User
       Carrie Delia Diya Leticia Sheila Susana Kylah Sky Antonia Bree
       Marlen Olive Zaniya)
     end
+    private :list_of_female_first_names
 
     def list_of_last_names
       %w(Smith Johnson Williams Jones Brown Davis Miller Wilson Moore
@@ -409,5 +416,6 @@ class Dummy::User
       Cooke Velazquez Whitley Noel Vang
       )
     end
+    private :list_of_last_names
   end
 end
