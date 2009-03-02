@@ -1,3 +1,5 @@
+require 'time'
+
 module Dummy; end;
 
 class Dummy::Content
@@ -104,8 +106,11 @@ class Dummy::Content
       txt.strip 
     end
 
-    def date()
-      epoch = Time.parse('1970/01/01')
+    def date(begin_year = 1970, end_year = nil)
+      end_year ||= Time.now.strftime("%Y").to_i
+      begin_point = Time.local(begin_year).to_i
+      end_point   = Time.local(end_year).to_i - 1
+      Time.at((rand(end_point - begin_point) + begin_point).to_i)
     end
   end
 end

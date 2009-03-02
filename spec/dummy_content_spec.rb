@@ -1,6 +1,5 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
-
 describe "Dummy namespace" do
   it 'should exit' do
     ::Object.const_defined?('Dummy').should be_true
@@ -22,7 +21,6 @@ describe "Dummy::Content namespace" do
 end 
 
 describe "Dummy::Content" do
-
   it "should produce random words within a default range of 25-255" do
     100.times do
       words = Dummy::Content.words
@@ -101,7 +99,48 @@ describe "Dummy::Content" do
         words.length.should == length
       end
     end
-
   end
+
+  describe 'text' do
+    it "should return variable text" do
+      100.times do 
+        text = Dummy::Content.text()
+        text.length.should > 2048
+        text.length.should < 4096
+      end
+    end
+  end
+
+  describe 'date' do
+    it "should return a random date" do
+      100.times do
+        begin_year = 1988
+        end_year = 2004
+        begin_epoch = Time.local(begin_year).to_i
+        end_epoch   = Time.local(end_year).to_i - 1
+        date = Dummy::Content.date(begin_year, end_year)
+        date.class.should == Time
+        date.to_i.should >= begin_epoch
+        date.to_i.should <= end_epoch
+      end
+    end
+
+    it "should have default values" do
+      100.times do
+        begin_epoch = 0
+        end_epoch  = Time.local(Time.now.strftime("%Y").to_i + 1).to_i - 1
+        date = Dummy::Content.date()
+        date.class.should == Time
+        date.to_i.should >= begin_epoch
+        date.to_i.should <= end_epoch
+      end
+
+    end
+  end
+
+
+
+
+
   
 end
