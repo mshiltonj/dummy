@@ -6,17 +6,28 @@ Requires the file '/usr/share/dict/words' for now. :-/
 
 = Examples
 
- Post.title = Dummy::Content.words(50, 140) 
+  Post.title = Dummy::Content.words(50, 140) 
 
 Returns a string of words within specified minimum and maximum length.
 
- Post.body = Dummy::Content.text(2048, 4096) 
+  Post.summary = Dummy::Content.string(64)
+
+Returns a string of text of the specified length. (The same as Dummy::Content.words(x,x)
+
+  Post.body = Dummy::Content.text(2048, 4096) 
 
 Returns a block of text within specified minimum and maximum length. This differs from .words() in that it includes randomly inserted paragraph breaks.
 
- Dummy::User.new()
+  Post.release_date = Dummy::Content.date(1990, 2000)
+  Post.release_date = Dummy::Content.date(1990)
+  Post.release_date = Dummy::Content.date()
 
-Returns a dummy user record with related field values. For example: [tba]
+Returns a random Time object initialized with a random date between the beginning and the end year. The beginning year defaults to 1970 and the the ending year defaults to the current year.
+
+  Dummy::User.new()
+
+Returns a dummy user record with related values for first_name, last_name, login and email. For example:
+  #<Dummy::User:0xb7acc56c @last_name="sampson", @full_name="andrew sampson", @login="andrew.s.5547", @first_name="andrew", @email_address="andrew.s.5547@example.com">
 
 = Additional Info
 
