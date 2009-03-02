@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dummy}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Steven Hilton"]
-  s.date = %q{2009-03-01}
+  s.date = %q{2009-03-02}
   s.description = %q{Generating dummy data, perhaps for integration or performance testing}
   s.email = %q{mshiltonj@gmail.com}
   s.files = ["dummy.gemspec", "coverage", "tasks", "spec_report", "spec", "MIT-LICENCE", "README", "lib", "Rakefile", "VERSION.yml", "lib/dummy.rb", "lib/dummy", "lib/dummy/content.rb", "lib/dummy/user.rb", "tasks/jeweler.rake", "tasks/rspec.rake"]
