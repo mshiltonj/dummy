@@ -94,16 +94,21 @@ class Dummy::Content
 
     def text(min = 2048, max = 4096) 
       txt = ''
-      random_length = rand(max - min) + min
+      random_length = (rand(max - min) + min).to_i
       while 1 do
-        sentence = words(5)
-        sentence << ". "
-        sentence << "\n\n" if rand(5) == 1
-        break if txt.length + sentence.length > random_length
+        sentence = words(5, 125)
         sentence.capitalize!
+        sentence << ". "
+        break if txt.length + sentence.length > random_length
+        sentence << "\n\n" if rand(5) == 1
         txt << sentence
       end
-      txt.strip 
+
+      if txt.length < random_length
+        last = string(random_length - txt.length)
+        txt << last
+      end 
+      txt 
     end
 
     def date(begin_year = 1970, end_year = nil)

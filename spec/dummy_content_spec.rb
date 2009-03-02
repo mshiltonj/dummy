@@ -1,5 +1,6 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 
+
 describe "Dummy namespace" do
   it 'should exit' do
     ::Object.const_defined?('Dummy').should be_true
@@ -20,7 +21,9 @@ describe "Dummy::Content namespace" do
   end
 end 
 
+
 describe "Dummy::Content" do
+
   it "should produce random words within a default range of 25-255" do
     100.times do
       words = Dummy::Content.words
@@ -101,6 +104,7 @@ describe "Dummy::Content" do
     end
   end
 
+
   describe 'text' do
     it "should return variable text" do
       100.times do 
@@ -109,6 +113,14 @@ describe "Dummy::Content" do
         text.length.should < 4096
       end
     end
+
+    it "should be able to return text of exact length" do
+      100.times do 
+        text = Dummy::Content.text(3000, 3000)
+        text.length.should == 3000
+      end
+    end
+
   end
 
   describe 'date' do
@@ -137,10 +149,6 @@ describe "Dummy::Content" do
 
     end
   end
-
-
-
-
 
   
 end
