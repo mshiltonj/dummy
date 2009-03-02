@@ -41,6 +41,8 @@ class Dummy::Content
     private :get_random_length
 
     def words(min = 25, max = 255)
+      raise "min cannot be greater than max" if min > max
+
       wrds = '' 
       old_wrds = ''
       random_length = get_random_length(min, max)
@@ -99,14 +101,16 @@ class Dummy::Content
         sentence = words(5, 125)
         sentence.capitalize!
         sentence << ". "
-        break if txt.length + sentence.length > random_length
         sentence << "\n\n" if rand(5) == 1
+        break if txt.length + sentence.length > random_length
         txt << sentence
       end
 
       if txt.length < random_length
-        last = string(random_length - txt.length)
-        txt << last
+        diff = random_length - txt.length
+        last_line = string(random_length - txt.length)
+        ll = last_line.length
+        txt << last_line
       end 
       txt 
     end

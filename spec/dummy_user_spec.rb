@@ -10,7 +10,10 @@ describe "Dummy namespace" do
   end
 end
 
+
+
 describe "Dummy::User namespace" do
+
   it "should exist" do
     Dummy.const_defined?('User').should be_true
   end
@@ -18,7 +21,41 @@ describe "Dummy::User namespace" do
   it 'should be a class' do
     Dummy::User.class.should == Class
   end
+
+
+  describe "generate_login" do
+    it "varies the format of the login" do
+      Kernel.stub!(:rand).and_return(0)
+      login = Dummy::User.class_eval {
+        generate_login('first', 'last')
+      }
+      login.should match(/^first\.last\./)
+
+      Kernel.stub!(:rand).and_return(1)
+      login = Dummy::User.class_eval {
+        generate_login('first', 'last')
+      }
+      login.should match(/^f\.last\./)
+
+      Kernel.stub!(:rand).and_return(2)
+      login = Dummy::User.class_eval {
+        generate_login('first', 'last')
+      }
+      login.should match(/^first\.l\./)
+    end
+
+    it "won't allow an invalid random number" do
+      Kernel.stub!(:rand).and_return(4)
+      lambda {
+        Dummy::User.class_eval {
+          generate_login()
+        }
+      }.should raise_error
+    end
+  end
+
 end 
+
 
 describe "Dummy::User" do
   before(:all) do
@@ -59,5 +96,6 @@ describe "Dummy::User" do
   end
 
 end
+
 
 

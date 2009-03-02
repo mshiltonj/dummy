@@ -43,15 +43,19 @@ class Dummy::User
 
       num = rand(9999)
 
-      format_change = rand(3)
+      format_change = Kernel.rand(3)
 
-      case format_change
-        when 1
-          fname = fname.slice(0..0)
-        when 2 
-          lname = lname.slice(0..0)
+      if (format_change == 0)
+        # do nothing
+      elsif (format_change == 1)
+        fname = fname.slice(0..0)
+      elsif (format_change == 2)
+        lname = lname.slice(0..0)
+      else
+        raise "Number out of range"
       end
-      "%s.%s.%04d" % [fname, lname, num]
+
+      login = "%s.%s.%04d" % [fname, lname, num]
     end
     private :generate_login
 
